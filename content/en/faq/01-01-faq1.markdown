@@ -1,0 +1,8 @@
++++
+title = 'What color is the sky?'
+date = 2022-04-09T09:41:34-07:00
+draft = false
+type = "faq"
+weight = 1
++++
+Blue/black
