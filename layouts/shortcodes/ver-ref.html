@@ -3,4 +3,4 @@
 {{- $projectVersion := index $.Site.Data.versions.current $project -}}
 {{- $version := cond (eq (len $versionParam) 0 ) (print $projectVersion.major "." $projectVersion.minor ".x" ) $versionParam -}}
 {{- $refpage := .Get "page" }}
-<a href="/{{ $.Page.Language }}/{{$project}}/{{$version}}{{$refpage}}">{{.Inner}}</a>
+<a href="{{ $.Site.BaseURL }}/{{ $.Page.Language }}/{{$project}}/{{$version}}{{$refpage}}">{{.Inner}}</a>
