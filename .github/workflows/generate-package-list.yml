@@ -4,6 +4,7 @@ on:
     inputs:
       minorRelease:
         description: 'Minor release (e.g. 1.13.x)'
+        required: true
         type: string
       branchOrTagName:
         description: 'Patch release (e.g. 1.13.2)'
