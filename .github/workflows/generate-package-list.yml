@@ -31,6 +31,9 @@ jobs:
         run: |
           rm -rf bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/packages/$PATCH_RELEASE/
           find bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/packages/
+        env:
+          MINOR_RELEASE: ${{ inputs.minorRelease }}
+          PATCH_RELEASE: ${{ inputs.branchOrTagName }}
       - name: Generate package version list
         run: |
           bash bottlerocket-project-website/scripts/software-versions-inventory/software-versions-inventory.sh bottlerocket/ > bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/packages/$PATCH_RELEASE/index.markdown
