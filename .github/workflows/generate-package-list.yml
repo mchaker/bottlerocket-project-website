@@ -2,8 +2,11 @@ name: generate-package-list
 on: 
   workflow_dispatch:
     inputs:
+      minorRelease:
+        description: 'Minor release label (e.g. v1.13.x)'
+        type: string
       branchOrTagName:
-        description: 'Branch or Tag Name'
+        description: 'Branch or Tag Name (e.g. v1.13.2)'
         required: true
         type: string
 jobs:
@@ -20,17 +23,22 @@ jobs:
           repository: bottlerocket-os/bottlerocket
           path: bottlerocket
           ref: ${{ inputs.branchOrTagName }}
-      - run: |
-          pwd
-          ls
-          mkdir test-1-2-3
-          ls
-          echo "testing 1 2 3"
-          echo "tag: $BRANCH_TAG_NAME"
-          cd bottlerocket
-          pwd
-          ls
-          git tag -l
-          git status
+      - name: Install rust toolchain
+        run: |
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+      - name: Install prerequisite packages via apt
+        run: |
+          DEBIAN_FRONTEND=noninteractive sudo apt -y install rpm make
+      - name: Generate package version list
+        run: |
+          bash bottlerocket-project-website/scripts/software-versions-inventory/software-versions-inventory.sh bottlerocket/ > bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/packages/$PATCH_RELEASE/index.markdown
+          cat bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/packages/$PATCH_RELEASE/index.markdown
         env:
-          BRANCH_TAG_NAME: ${{ inputs.branchOrTagName }}
+          MINOR_RELEASE: ${{ inputs.minorRelease }}
+          PATCH_RELEASE: ${{ inputs.branchOrTagName }}
+      - name: Check package list
+        run: |
+          cat bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/packages/$PATCH_RELEASE/index.markdown
+        env:
+          MINOR_RELEASE: ${{ inputs.minorRelease }}
+          PATCH_RELEASE: ${{ inputs.branchOrTagName }}
