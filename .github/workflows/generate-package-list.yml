@@ -23,9 +23,6 @@ jobs:
           repository: bottlerocket-os/bottlerocket
           path: bottlerocket
           ref: v${{ inputs.branchOrTagName }}
-      - name: Install rust toolchain
-        run: |
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
       - name: Install prerequisite packages via apt
         run: |
           DEBIAN_FRONTEND=noninteractive sudo apt -y install rpm make
