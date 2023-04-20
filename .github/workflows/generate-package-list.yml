@@ -27,6 +27,10 @@ jobs:
       - name: Install prerequisite packages via apt
         run: |
           DEBIAN_FRONTEND=noninteractive sudo apt -y install rpm make
+      - name: Remove old package list
+        run: |
+          rm -rf bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/packages/$PATCH_RELEASE/
+          find bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/packages/
       - name: Generate package version list
         run: |
           bash bottlerocket-project-website/scripts/software-versions-inventory/software-versions-inventory.sh bottlerocket/ > bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/packages/$PATCH_RELEASE/index.markdown
