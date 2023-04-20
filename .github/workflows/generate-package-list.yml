@@ -27,6 +27,10 @@ jobs:
           echo "testing 1 2 3"
           echo "tag: $BRANCH_TAG_NAME"
           cd bottlerocket
+          pwd
+          ls
           git tag -l
+          git checkout $BRANCH_TAG_NAME"
+          git status
         env:
           BRANCH_TAG_NAME: ${{ inputs.branchOrTagName }}
