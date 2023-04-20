@@ -30,7 +30,7 @@ jobs:
           pwd
           ls
           git tag -l
-          git checkout $BRANCH_TAG_NAME"
+          git checkout $BRANCH_TAG_NAME
           git status
         env:
           BRANCH_TAG_NAME: ${{ inputs.branchOrTagName }}
