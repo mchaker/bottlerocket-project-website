@@ -1,0 +1,21 @@
+name: generate-package-list
+on: 
+  workflow_dispatch:
+    inputs:
+      branchOrTagName:
+        description: 'Branch or Tag Name'
+        required: true
+        type: string
+jobs:
+  generate-package-list:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          git status
+          pwd
+          mkdir test-1-2-3
+          ls
+          echo "testing 1 2 3"
+          echo "$BRANCH_TAG_NAME"
+        env:
+          BRANCH_TAG_NAME: ${{ inputs.branchOrTagName }}
