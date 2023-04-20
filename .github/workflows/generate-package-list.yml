@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          git status
           pwd
           mkdir test-1-2-3
           ls
