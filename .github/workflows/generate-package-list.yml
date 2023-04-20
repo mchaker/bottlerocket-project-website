@@ -3,10 +3,10 @@ on:
   workflow_dispatch:
     inputs:
       minorRelease:
-        description: 'Minor release label (e.g. v1.13.x)'
+        description: 'Minor release (e.g. 1.13.x)'
         type: string
       branchOrTagName:
-        description: 'Branch or Tag Name (e.g. v1.13.2)'
+        description: 'Patch release (e.g. 1.13.2)'
         required: true
         type: string
 jobs:
@@ -22,7 +22,7 @@ jobs:
         with:
           repository: bottlerocket-os/bottlerocket
           path: bottlerocket
-          ref: ${{ inputs.branchOrTagName }}
+          ref: v${{ inputs.branchOrTagName }}
       - name: Install rust toolchain
         run: |
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
