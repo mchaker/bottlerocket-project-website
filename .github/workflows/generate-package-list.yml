@@ -30,9 +30,6 @@ jobs:
           repository: bottlerocket-os/bottlerocket
           path: bottlerocket
           ref: v${{ inputs.patchRelease }}
-      - name: Install prerequisite packages via apt
-        run: |
-          DEBIAN_FRONTEND=noninteractive sudo apt -y install rpm make
       - name: Remove old package list
         run: |
           rm -rf bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/packages/$PATCH_RELEASE/
