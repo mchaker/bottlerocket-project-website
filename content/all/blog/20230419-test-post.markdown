@@ -3,7 +3,7 @@ date = 2023-04-19T00:00:00.000Z
 title = "Bottlerocket blog test post"
 linkTitle = "Announcing the Blog"
 description = "Bottlerocket is awesome"
-author = "Firstname Lastname"
+authors = ["Firstname Lastname"]
 +++
 
 # Test title 1

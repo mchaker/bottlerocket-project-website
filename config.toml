@@ -4,6 +4,9 @@ title = 'Bottlerocket'
 
 defaultContentLanguage = 'all'
 
+[taxonomies]
+  author = "authors"
+
 [params]
 copyright = "Copyright Amazon.com, Inc., its affiliates, or other contributors. All Rights Reserved."
 languageOverride = 'all'
