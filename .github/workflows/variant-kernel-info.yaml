@@ -37,7 +37,10 @@ jobs:
           MINOR_RELEASE: ${{ inputs.minorRelease }}
       - name: Generate variant kernel info
         run: |
-          bash bottlerocket-project-website/scripts/variant-kernel/get_cargos.sh bottlerocket/variants bottlerocket-project-website/data/variants/$MINOR_RELEASE/
+          echo $PWD
+          export ACTION_ROOT_DIR=$PWD
+          pushd bottlerocket-project-website/scripts/variant-kernel
+          bash ./get_cargos.sh $ACTION_ROOT_DIR/bottlerocket/variants $ACTION_ROOT_DIR/bottlerocket-project-website/data/variants/$MINOR_RELEASE/
         env:
           MINOR_RELEASE: ${{ inputs.minorRelease }}
       - name: Open PR for changes
