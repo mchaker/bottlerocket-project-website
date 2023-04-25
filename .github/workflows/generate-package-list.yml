@@ -46,7 +46,6 @@ jobs:
       - name: Generate package version list
         run: |
           bash bottlerocket-project-website/scripts/software-versions-inventory/software-versions-inventory.sh bottlerocket/ > bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/packages/$PATCH_RELEASE/index.markdown
-          cat bottlerocket-project-website/content/en/os/$MINOR_RELEASE/version-information/packages/$PATCH_RELEASE/index.markdown
         env:
           MINOR_RELEASE: ${{ inputs.minorRelease }}
           PATCH_RELEASE: ${{ inputs.patchRelease }}
