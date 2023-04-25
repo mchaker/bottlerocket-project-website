@@ -37,7 +37,6 @@ jobs:
           MINOR_RELEASE: ${{ inputs.minorRelease }}
       - name: Generate variant kernel info
         run: |
-          echo $PWD
           export ACTION_ROOT_DIR=$PWD
           pushd bottlerocket-project-website/scripts/variant-kernel
           bash ./get_cargos.sh $ACTION_ROOT_DIR/bottlerocket/variants $ACTION_ROOT_DIR/bottlerocket-project-website/data/variants/$MINOR_RELEASE/
@@ -57,7 +56,9 @@ jobs:
 
             **Description of changes:**
 
-            adds variant kernel info info for v${{ inputs.minorRelease }} using the v${{ inputs.patchRelease }} Bottlerocket OS repository tag.
+            adds variant kernel info for v${{ inputs.minorRelease }}
+
+            Bottlerocket OS repository tag used: v${{ inputs.patchRelease }}
 
             **Terms of contribution:**
 
